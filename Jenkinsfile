@@ -1,13 +1,5 @@
-pipeline {
-
-
-        stage('Cleanup Workspace') {
-            steps {
-                cleanWs()
-                sh """
-                echo "Cleaned Up Workspace for ${APP_NAME}"
-                """
-            }
+post {
+        always {
+            echo 'I will always say Hello again!'
         }
-
 }
