@@ -1,27 +1,5 @@
 pipeline {
 
-    agent {
-        node {
-            label 'deploy'
-        }
-    }
-
-    tools {
-        ansible 'ansible-demo'
-    }
-
-    options {
-        buildDiscarder logRotator(
-                    daysToKeepStr: '15',
-                    numToKeepStr: '10'
-            )
-    }
-
-    environment {
-        APP_ENV  = "DEV"
-    }
-
-    stages {
 
         stage('Cleanup Workspace') {
             steps {
@@ -32,29 +10,4 @@ pipeline {
             }
         }
 
-        stage('Code Checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/master']],
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
-            }
-        }
-
-        stage('Code Build') {
-            steps {
-                 sh 'mvn install -Dmaven.test.skip=true'
-            }
-        }
-
-        stage('Priting All Global Variables') {
-            steps {
-                sh """
-                env
-                """
-            }
-        }
-
-    }
 }
