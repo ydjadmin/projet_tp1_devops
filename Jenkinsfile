@@ -1,10 +1,2 @@
-pipeline {
-    agent any
-    stages {
-        stage('Example') {
-            steps {
-                sh 'script.bash'
-            }
-        }
-    }
-}
+sh 'chmod +x ./script.bash'
+sh './script.bash'
