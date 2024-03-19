@@ -3,13 +3,8 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo 'Hello World'
+                sh 'script.bash'
             }
-        }
-    }
-    post {
-        always {
-            sh 'script.bash'
         }
     }
 }
