@@ -1,15 +1,8 @@
-pipeline {
-    agent any
-    stages {
-        stage('Example') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-    }
-    post {
-        always {
-            echo 'I will always say Hello again!'
-        }
+stage('Setting the variables values') {
+    steps {
+         bash '''
+            #!/bin/bash
+            script.bash
+         '''
     }
 }
